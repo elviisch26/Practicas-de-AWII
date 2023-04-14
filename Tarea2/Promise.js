@@ -1,12 +1,3 @@
-const curso =[
-    {id:1, descripcion:'Redes', fechaInicio:'23/04/2023'},
-    {id:2, descripcion:'Programacion', fechaInicio:'31/04/2023'},
-    {id:3, descripcion:'Ingles', fechaInicio:'18/04/2023'},
-    {id:4, descripcion:'Sistema Operativos', fechaInicio:'20/04/2023'},
-    {id:5, descripcion:'Base de datos', fechaInicio:'12/04/2023'}
-]
-
-
 const aspirante =[
     {id:1, nombre:'Leonardo Moreira', identificacion:'1316611332'},
     {id:2, nombre:'Steffy Perez', identificacion:'1314568542'},
@@ -22,11 +13,3 @@ const inscripcion =[
     {id:4, id_curso:1, id_aspirante:4, fecha:'6/42023', hora:'13:47:55', valorCancelodo:'20,50'},    
     {id:5, id_curso:1, id_aspirante:5, fecha:'6/42023', hora:'20:23:15', valorCancelodo:'35,40'},
 ]
-
-//Se exportan los arrays para poder utilizarlos en las funciones 
-module.exports ={
-    curso,
-    aspirante,
-    inscripcion
-};
-
