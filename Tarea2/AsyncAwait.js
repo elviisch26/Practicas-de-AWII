@@ -1,15 +1,34 @@
-const aspirante =[
-    {id:1, nombre:'Leonardo Moreira', identificacion:'1316611332'},
-    {id:2, nombre:'Steffy Perez', identificacion:'1314568542'},
-    {id:3, nombre:'Dennis Murillo', identificacion:'1785091563'},
-    {id:4, nombre:'Luis Cervantes', identificacion:'1452546235'},
-    {id:5, nombre:'Samanta Oveido', identificacion:'1315486922'}
-]
+const {aspirante, inscripcion}= require ('./datos')
 
-const inscripcion =[
-    {id:1, id_curso:1, id_aspirante:1, fecha:'6/42023', hora:'14:54:05', valorCancelodo:'35,40'},
-    {id:2, id_curso:1, id_aspirante:2, fecha:'6/42023', hora:'18:15:55', valorCancelodo:'20,50'},
-    {id:3, id_curso:1, id_aspirante:3, fecha:'6/42023', hora:'11:25:10', valorCancelodo:'35,40'},
-    {id:4, id_curso:1, id_aspirante:4, fecha:'6/42023', hora:'13:47:55', valorCancelodo:'20,50'},    
-    {id:5, id_curso:1, id_aspirante:5, fecha:'6/42023', hora:'20:23:15', valorCancelodo:'35,40'},
-]
+async function findInscripcionForId(id){
+        const ins = inscripcion.find(ins=> ins.id=== id)
+        if (!ins)
+        {
+            const error = new Error();
+            error.message=`La inscripción ${id} no fue encontrada`;
+            return error;
+        }
+        return ins;
+}
+async function findAspiranteForId(id){
+        const asp = aspirante.find(asp => asp.id=== id)
+        if (!asp)
+        {
+            const error= new Error();
+            error.message=`El aspirante ${id} no fue encontrado`;
+            return error;
+        }
+        return asp;
+}
+
+(async ()=>{
+    try {
+        const ins = await findInscripcionForId(2);
+        const asp = await findAspiranteForId(ins.id_aspirante);
+        ins.asp= asp;
+        console.log(ins);
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+})();
