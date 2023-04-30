@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 //cadena de conexion para conectarnos a la base de datos
 
