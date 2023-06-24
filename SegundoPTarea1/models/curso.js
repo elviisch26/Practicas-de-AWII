@@ -6,7 +6,7 @@ const CursoSchema = Schema(
             type: String,
             unique:true
         },
-        fechaIcicio:{
+        fechaInicio:{
             type: String,
             unique:true
         },
@@ -15,7 +15,6 @@ const CursoSchema = Schema(
             default: true,
             required:true
         }
-
     }
 );
 CursoSchema.methods.toJSON = function(){

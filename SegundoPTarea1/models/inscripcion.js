@@ -2,6 +2,16 @@ const { model, Schema } = require('mongoose');
 
 const InscripcionSchema = Schema(
     {
+        idcurso: {
+            type: Schema.Types.ObjectId,
+            ref:'Curso',
+            required:false
+        },
+        idaspirante: {
+            type: Schema.Types.ObjectId,
+            ref:'Aspirante',
+            required:false
+        },
         fecha: {
             type: Date,
             unique: true
@@ -27,4 +37,4 @@ InscripcionSchema.methods.toJSON = function () {
     return data;
 }
 
-module.exports = model('Aspirante', InscripcionSchema);
+module.exports = model('Inscripcion', InscripcionSchema);

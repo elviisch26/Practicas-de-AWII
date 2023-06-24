@@ -1,6 +1,7 @@
 const { response } = require('express');
 const { Inscripcion } = require('../models');
 
+
 const getInscripcion = async (req, res = response) => {
     const { limite = 10, desde = 0 } = req.query;
     const query = { status: true };
@@ -26,18 +27,17 @@ const getInscripciones = async (req, res = response) => {
 const createInscripciones = async (req, res = response) => {
     const { status, ...body } = req.body;
 
-    const existInscripcion = await Inscripcion.findOne({ name: body.name })
+    const existInscripcion = await Inscripcion.findOne({ body })
 
-    if (existInscripcion) {
+    if (existInscripcion) 
+    {
         return res.status(400).json({
-            msg: `la inscripcion ${existeCategoria.name} ya existe`
+            msg: `la inscripcion ${ existInscripcion.name} ya existe`
         })
     }
 
     const data = {
-        ...body,
-        name: body.name
-    }
+        ...body,    }
 
     const inscripcion = new Inscripcion(data);
 

@@ -16,9 +16,9 @@ const router = Router();
 
 router.get('/', getCurso);
 
-router.get('/:id', [
-    check('id', 'Este no es un ID de Mongo correcto').isMongoId()
-], getCursos);
+router.get('/:id',
+[check('id', 'Este no es un ID de Mongo correcto').isMongoId()
+],getCursos);
 
 router.post('/', [
     check('descripcion', 'El curso es requerido').not().isEmpty(),

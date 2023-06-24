@@ -4,11 +4,12 @@ const AspiranteSchema = Schema(
     {
         nombre:{
             type: String,
+            required: [ true, 'El nombre del Aspirante es necesario'],
             unique:true
         },
         identificacion:{
             type: Number,
-            unique
+            unique:true
         },
         status:{
             type: Boolean,

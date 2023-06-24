@@ -1,6 +1,7 @@
 const { response } = require('express');
 const{ Aspirante } = require('../models');
 
+
 const getAspirante = async (req,res = response )=>{
     const { limite = 10 , desde=0 } =  req.query;
     const query = { status:true };

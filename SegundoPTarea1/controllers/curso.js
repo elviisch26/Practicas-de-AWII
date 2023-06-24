@@ -16,6 +16,7 @@ const getCurso = async (req, res = response) => {
         sum,
         cursos
     })
+
 }
 
 const getCursos = async (req, res = response) => {
@@ -23,14 +24,16 @@ const getCursos = async (req, res = response) => {
     const cursos = await Curso.findById(id);
     res.json(cursos);
 }
+
 const createCursos = async (req, res = response) => {
     const { status, ...body } = req.body;
 
     const existCurso = await Curso.findOne({ descripcion: body.descripcion })
 
-    if (existCurso) {
+    if (existCurso)
+    {
         return res.status(400).json({
-            msg: `El curso ${existAspirante.descripcion} ya existe`
+            msg: `El curso ${ existCurso.descripcion } ya existe`
         })
     }
 
@@ -47,8 +50,8 @@ const createCursos = async (req, res = response) => {
 const updateCursos = async (req, res = response) => {
     const { id } = req.params;
     const { status, ...data } = req.body;
-    const cursoUpdated = await Curso.findByIdAndUpdate(id, data, { new: true })
-    res.json(cursoUpdated);
+    const updatedCurso = await Curso.findByIdAndUpdate(id, data, { new: true })
+    res.json(updatedCurso);
 }
 const deleteCursos = async (req, res = response) => {
     const { id } = req.params;
@@ -64,4 +67,3 @@ module.exports = {
     updateCursos,
     deleteCursos
 };
-

@@ -12,11 +12,11 @@ const {
 
 const router = Router();
 
-router.get('/',getAspirantes);
+router.get('/',getAspirante);
 
-router.get('/:id', [
-    check('id', 'Este no es un Id de nongo correcto').isMongoId()
-] , getAspirante);
+router.get('/:id',
+[check('id', 'Este no es un ID de Mongo correcto').isMongoId()
+],getAspirantes);
 
 router.post('/',[
     check('nombre', 'El nombre es requerido').not().isEmpty(),
