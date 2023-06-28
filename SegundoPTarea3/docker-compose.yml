@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  curso:
+    build: ./curso
+    depends_on:
+      - datacurso
+    environment:
+      - PORT=3000
+      - MONGODB_CNN=mongodb://datacategories:27017/test
+    # ports:
+    #   - "2500:2500"
+  aspirante:
+    build: ./aspirante
+    depends_on:
+      - dataaspirante
+    environment:
+      - PORT=3000
+      - MONGODB_CNN=mongodb://dataproducts:27017/test
+    inscripcion:
+      build: ./inscripcion
+      depends_on:
+        - datainscripcion
+      environment:
+        - PORT=3000
+        - MONGODB_CNN=mongodb://dataproducts:27017/test
+  datacurso:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  dataaspirante:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  datainscripcion:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - curso
+      - aspirante
+      - inscripcion
