@@ -7,7 +7,7 @@ services:
       - datacurso
     environment:
       - PORT=3000
-      - MONGODB_CNN=mongodb://datacategories:27017/test
+      - MONGODB_CNN=mongodb://datacurso:27017/test
     # ports:
     #   - "2500:2500"
   aspirante:
@@ -16,14 +16,14 @@ services:
       - dataaspirante
     environment:
       - PORT=3000
-      - MONGODB_CNN=mongodb://dataproducts:27017/test
+      - MONGODB_CNN=mongodb://dataaspirante:27017/test
     inscripcion:
       build: ./inscripcion
       depends_on:
         - datainscripcion
       environment:
         - PORT=3000
-        - MONGODB_CNN=mongodb://dataproducts:27017/test
+        - MONGODB_CNN=mongodb://datainscripcion:27017/test
   datacurso:
     image: mongo
     # ports:
