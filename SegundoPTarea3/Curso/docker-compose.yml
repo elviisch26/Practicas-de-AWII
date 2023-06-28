@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  backend:  
+    build: .
+    depends_on:
+      - database
+    environment:
+      - PORT= 2500
+      - MONGODB_CNN=mongodb://superuleam:Leoj260904@cluster0.f3ypjbe.mongodb.net/rest1
+    ports:
+      - "2500:2500"
+  database:
+    image: mongo
+    ports:
+      - "27017:26017"
+  # Agregar el Front-End
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports:
+      - "80:80" 
