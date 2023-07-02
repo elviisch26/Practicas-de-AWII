@@ -17,7 +17,7 @@ services:
     environment:
       - PORT=3000
       - MONGODB_CNN=mongodb://dataaspirante:27017/test
-    inscripcion:
+  inscripcion:
       build: ./inscripcion
       depends_on:
         - datainscripcion
@@ -39,7 +39,8 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:8080"
+      - "8888:8080"
+      ## Cambie de puerto al 8888:8080 por que en mi compu me daba error
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
