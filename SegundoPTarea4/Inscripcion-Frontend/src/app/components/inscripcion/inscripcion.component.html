@@ -1,51 +1,77 @@
-<div class="row">
-    <!-- FORM -->
-    <div class="col-md-4 , mt-4, ml-auto">
+<div class="container">
+    <div class="row justify-content-center">
+      <!-- FORM -->
+      <div class="col-md-8 col-lg-6 mt-4">
         <div class="card">
-            <div class="card-body p-4">
-                <!-- FORM -->
-                <form >
-                    <div class="form-group">
-                        <input type="number"  placeholder="Fecha" class="form-control">
+          <div class="card-header">
+            <h2 class="text-center">Inscripcion</h2>
+          </div>
+          <div class="card-body p-4">
+            <!-- FORM -->
+            <form #inscripcionForm="ngForm" (ngSubmit)="envioInscripciones(inscripcionForm.value)">
+                <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <select  name="idaspirante" ngModel id="idaspirante" type="text" class="form-select" aria-label="Default select example">
+                          <option value="" disabled selected>Aspirante</option>
+                          <option *ngFor="let aspirante of datosAspirantes.aspirantes" [value]="aspirante._id">{{aspirante.nombre | uppercase}}</option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="form-group">
-                            <input type="number" placeholder="Hora" class="form-control">
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <select  name="iddeportista" ngModel id="iddeportista" type="text" class="form-select" aria-label="Default select example">
+                          <option value="" disabled selected>Curso</option>
+                          <option *ngFor="let curso of datosCurso.cursos" [value]="curso._id">{{curso.descripcion | uppercase}}</option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="form-group">
-                        <input type="number"  placeholder="Valor cancelado" class="form-control">
-                    </div>
-                    <button class="btn btn-primary mr-2, mt-2">Crear</button>
-                </form>
-            </div>
+                  </div>
+                <div class="form-group">
+                <input type="date" name="fecha" ngModel placeholder="Fecha" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="time" name="hora" ngModel placeholder="Hora" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="number" name="valorCancelado" ngModel placeholder="Valor Cancelado" class="form-control">
+              </div>
+              <button class="btn btn-primary mt-2">Crear</button>
+            </form>
+          </div>
         </div>
-    </div>
-</div>
-
-
-
-<div class="col-md-8, mt-4">
-    <div class="card">
-        <table class="table table-striped">
-            <thead>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Valor Cancelado</th>
-            </thead>
-            <tbody>
+      </div>
+      <div class="col-md-10 mt-4">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
                 <tr>
-                    <td>25/52/2020</td>
-                    <td>20:22</td>
-                    <td>36.5</td>
-                    <td>
-                        <a class="btn btn-secondary btn-sm">
-                            <i class="material-icons">Editar</i>
-                        </a>
-                        <a class="btn btn-danger btn-sm">
-                            <i class="material-icons">Eliminar</i>
-                        </a>
-                    </td>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Valor Cancelado</th>
                 </tr>
-            </tbody>
-        </table>
+              </thead>
+              <tbody>
+                <tr *ngFor="let inscripcion of datosIncripciones.inscripciones">
+                  <td>{{inscripcion.fecha}}</td>
+                  <td>{{inscripcion.hora}}</td>
+                  <td>{{inscripcion.valorCancelado}}</td>
+
+                  <td>
+                    <a class="btn btn-secondary btn-sm">
+                      <i class="material-icons" (click)="editarInscripcion()">Editar</i>
+                    </a>
+                    <a class="btn btn-danger btn-sm">
+                      <i class="material-icons" (click)="eliminarInscripcion(inscripcion._id)">Eliminar</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

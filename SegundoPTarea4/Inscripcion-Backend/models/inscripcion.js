@@ -13,16 +13,13 @@ const InscripcionSchema = Schema(
             required:false
         },
         fecha: {
-            type: Number,
-            unique: true
+            type: String,
         },
         hora: {
-            type: Number,
-            unique: true
+            type: String,
         },
         valorCancelado: {
             type: Number,
-            unique: true
         },
         status: {
             type: Boolean,

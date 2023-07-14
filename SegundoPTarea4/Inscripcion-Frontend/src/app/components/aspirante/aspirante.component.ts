@@ -8,6 +8,8 @@ import {IAspirante,IAspirantes} from '../../interface/IAspirantes'
   styleUrls: ['./aspirante.component.css']
 })
 export class AspiranteComponent {
+  id: string='';
+
   datosAspirantes:IAspirantes = { sum:0, aspirantes:[] };
   title:string = 'Aspirantes';
 
@@ -19,17 +21,23 @@ export class AspiranteComponent {
   ngOnInit() {
     this.cargarAspirante();
  }
-  envioAspirantes(value: IAspirante){
-    let body:IAspirante = {
-      nombre: value.nombre,
-      identificacion: value.identificacion
-    }
+ envioAspirantes(value: IAspirante) {
+  const id = this.id;
+  let body: IAspirante = {
+    nombre: value.nombre,
+    identificacion: value.identificacion
+  };
+
+  if (id.trim().length === 0) {
     this.aspiranteService.postAspirante(body)
-    .subscribe(response => {
-      console.log(response)
-      this.cargarAspirante();
-    })
+      .subscribe(response => {
+        console.log(response);
+        this.cargarAspirante();
+      });
+  } else {
+    this.actualizarAspirante(body, id);
   }
+}
   cargarAspirante(){
     this.aspiranteService.getAspirante()
     .subscribe(data => {
@@ -43,12 +51,12 @@ export class AspiranteComponent {
       });
     }
   }
-   editarAspirante(id: string, datosActualizados: any) {
-    this.cargarAspirante = datosActualizados;
-    this.aspiranteService.updateAspirante(id, datosActualizados)
-    .subscribe(data => {
-      console.log(data); 
-    });
-}
+  actualizarAspirante(body: IAspirante, id: string) {
+    this.aspiranteService.updateAspirante(body, id)
+      .subscribe(response => {
+        console.log(response);
+        this.ngOnInit();
+      });
 }  
 
+}

@@ -1,14 +1,12 @@
-import { Number, ObjectId } from "mongoose";
-
 export interface IIncripciones{
     sum:      number;
-    inscripcion: IIncripcion[];
+    inscripciones: IIncripcion[];
 }
 export interface IIncripcion{
-    _id?:     String;
-    /*_idcurso?: ObjectId;
-    _idaspirante?: ObjectId;*/
-    fecha:  Number;
-    hora: Number;
-    valorCancelado: Number;
+    _id?:     string;
+    _idcurso?:string;
+    _idaspirante?:string;
+    fecha:  string;
+    hora: string;
+    valorCancelado: number;
 }

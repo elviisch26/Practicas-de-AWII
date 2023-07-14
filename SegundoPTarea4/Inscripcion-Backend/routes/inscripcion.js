@@ -21,7 +21,7 @@ router.get('/:id', [
 ], getInscripciones);
 
 router.post('/', [
-    check('descripcion', 'El curso es requerido').not().isEmpty(),
+    check('valorCancelado', 'El Valor Cancelado es requerido').not().isEmpty(),
     validateFields
 ], createInscripciones)
 

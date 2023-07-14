@@ -4,11 +4,9 @@ const CursoSchema = Schema(
     {
         descripcion:{
             type: String,
-            unique:true
         },
         fechaInicio:{
             type: String,
-            unique:true
         },
         status:{
             type: Boolean,
