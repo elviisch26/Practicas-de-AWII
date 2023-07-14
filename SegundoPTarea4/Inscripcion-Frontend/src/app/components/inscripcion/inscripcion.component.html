@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group mb-3">
-                        <select  name="iddeportista" ngModel id="iddeportista" type="text" class="form-select" aria-label="Default select example">
+                        <select  name="idcurso" ngModel id="idcurso" type="text" class="form-select" aria-label="Default select example">
                           <option value="" disabled selected>Curso</option>
                           <option *ngFor="let curso of datosCurso.cursos" [value]="curso._id">{{curso.descripcion | uppercase}}</option>
                         </select>

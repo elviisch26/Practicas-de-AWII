@@ -53,7 +53,7 @@ export class InscripcionComponent {
 
   eliminarInscripcion(id: any){
     if (confirm('¿Estás seguro/a de que quieres eliminar este aspirante?')){
-      this.cursoService.deleteCurso(id).subscribe((res) => {
+      this.inscrpcionService.deleteInscripcion(id).subscribe((res) => {
         this.ngOnInit();
       });
     }
